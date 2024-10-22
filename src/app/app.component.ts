@@ -1,3 +1,4 @@
+//app.component.ts
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'first-angular-frontend';
+  title = `User's dashboard`;
 }
