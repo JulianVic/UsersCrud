@@ -1,0 +1,92 @@
+.dashboard-container {
+  padding: 1rem;
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ::ng-deep {
+    .p-button-edit {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+/* Estilos para el modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.modal h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.modal label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #555;
+}
+
+.modal input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #3085d6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.modal button[type="submit"]:hover {
+  background-color: #2873c6;
+}
+
+.modal button[type="button"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #ddd;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal button[type="button"]:hover {
+  background-color: #ccc;
+}
+
+/* Fondo oscuro para el overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}

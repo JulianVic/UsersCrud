@@ -3,28 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { AuthInterceptor } from './auth/interceptors/auth.interceptor'; 
+import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
     PageNotFoundComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonModule,
+    TableModule,
+    TagModule,
+    RatingModule
   ],
-  providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

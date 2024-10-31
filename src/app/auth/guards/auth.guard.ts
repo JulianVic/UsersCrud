@@ -2,7 +2,7 @@ import { inject } from "@angular/core";
 import { Router } from "@angular/router";
 import {jwtDecode} from "jwt-decode";
 
-export const loginGuard = () => {
+export const AuthGuard = () => {
     const router = inject(Router);
     const token = sessionStorage.getItem('access_token');
 

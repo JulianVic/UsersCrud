@@ -1,1 +1,96 @@
-<p>dashboard works!</p>
+<!-- dashboard.component.html -->
+<div class="dashboard-container">
+    <!-- Barra de herramientas -->
+    <div class="toolbar mb-3">
+        <p-button 
+            type="button" 
+            icon="pi pi-refresh" 
+            [outlined]="true" 
+            (click)="getUsers()" 
+            styleClass="p-button-text"
+            tooltip="Actualizar lista">
+        </p-button>
+        
+        <p-button 
+            type="button" 
+            icon="pi pi-plus" 
+            [outlined]="true" 
+            (click)="onSubmitCreate()" 
+            styleClass="p-button-text"
+            tooltip="Agregar usuario">
+        </p-button>
+    </div>
+
+    <!-- Tabla de usuarios -->
+    <p-table 
+        [value]="users" 
+        [tableStyle]="{'min-width': '50rem'}"
+        [paginator]="true" 
+        [rows]="10"
+        responsiveLayout="scroll">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>CreatedAt</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user let-columns="columns">
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.createdAt}}</td>
+                <td>
+                    <p-button type="button" icon="pi pi-pencil" [outlined]="true" class="p-button-rounded p-button-text p-button-edit " (click)="onSubmitUpdate(user)"></p-button>
+                    <p-button type="button" icon="pi pi-trash" [outlined]="true" severity="danger" class="p-button-rounded p-button-text p-button-delete" (click)="deleteUser(user)"></p-button>
+                  </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<!-- Modal para crear usuario -->
+<div *ngIf="showCreateModal">
+    <div class="modal-overlay" (click)="showCreateModal = false"></div>
+    <div class="modal">
+        <form [formGroup]="createForm" (ngSubmit)="createUser()">
+            <h3>Crear Usuario</h3>
+            
+            <label>Nombre</label>
+            <input formControlName="name" type="text" placeholder="Nombre">
+            
+            <label>Correo</label>
+            <input formControlName="email" type="email" placeholder="Correo">
+                        
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="showCreateModal = false">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal para actualizar usuario -->
+<div *ngIf="showUpdateModal">
+    <div class="modal-overlay" (click)="showUpdateModal = false"></div>
+    <div class="modal">
+      <form [formGroup]="updateForm" (ngSubmit)="updatedUser()">
+        <h3>Actualizar Usuario</h3>
+        
+        <label>Nombre</label>
+        <input formControlName="name" type="text" placeholder="Nombre">
+        
+        <label>Correo</label>
+        <input formControlName="email" type="email" placeholder="Correo">
+        
+        <label>Contraseña</label>
+        <input formControlName="password" type="password" placeholder="Contraseña">
+        
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="showUpdateModal = false">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  
+  
