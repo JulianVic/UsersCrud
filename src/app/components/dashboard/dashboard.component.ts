@@ -1,5 +1,4 @@
 // dashboard.component.ts
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -7,6 +6,8 @@ import { UpdateUser } from 'src/app/user/interfaces/UpdateUser';
 import { User } from 'src/app/user/interfaces/User';
 import { UserService } from 'src/app/user/services/user.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +25,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
   ) {
     this.updateForm = this.fb.group({
       name: [''],
@@ -137,4 +140,12 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
+
+
+//todo: send an email that will contain the password & create a button for log out

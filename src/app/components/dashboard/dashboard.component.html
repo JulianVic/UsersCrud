@@ -19,6 +19,15 @@
             styleClass="p-button-text"
             tooltip="Agregar usuario">
         </p-button>
+
+        <p-button 
+        type="button" 
+        icon="pi pi-sign-out" 
+        [outlined]="true" 
+        (click)="logout()" 
+        styleClass="p-button-text"
+        tooltip="Cerrar sesión">
+    </p-button>
     </div>
 
     <!-- Tabla de usuarios -->
